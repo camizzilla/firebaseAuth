@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "mc-dietista-app": {
+      "hosting": {
+        "app": [
+          "mc-dietista-app"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "mc-dietista-app"
+  }
+}

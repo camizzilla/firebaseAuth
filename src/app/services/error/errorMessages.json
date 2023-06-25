@@ -1,0 +1,6 @@
+{
+  "auth/wrong-password": {
+    "headler": "Password errata",
+    "messagge": "riprova"
+  }
+}
