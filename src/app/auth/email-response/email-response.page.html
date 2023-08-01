@@ -1,0 +1,31 @@
+<div class="container flex-column">
+  <div class="container-header">
+    <div class="logo">
+      <ion-img
+        src="../../../assets/images/logo.svg"
+        alt="Logo">
+      </ion-img>
+    </div>
+  </div>
+  <div class="container-body">
+    <ng-container [ngSwitch]="mode">
+      <!-- password reset -->
+      <ng-container *ngSwitchCase="'resetPassword'">
+       <app-confirm-password-reset></app-confirm-password-reset>
+     </ng-container>
+
+     <!-- verify email address -->
+     <ng-container *ngSwitchCase="'verifyEmail'">
+       <app-confirm-email-address></app-confirm-email-address>
+     </ng-container>
+
+     <!-- default action -->
+     <ng-container *ngSwitchDefault>
+       <!-- show an error message -->
+     </ng-container>
+   </ng-container>
+  </div>
+  <div class="container-footer">
+    <small>by Franco Castello</small>
+  </div>
+</div>

@@ -1,0 +1,30 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Account
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+  <ion-content class="ion-padding account">
+    <ion-list>
+      <ion-item color="light">
+        <ion-text class="ion-bold">
+          <h2>{{ authService.email }}</h2>
+        </ion-text>
+      </ion-item>
+      <ion-item color="light" detail [routerLink]="['change-email']">
+        <ion-label>Cambia Email</ion-label>
+      </ion-item>
+      <ion-item color="light" detail [routerLink]="['change-password']">
+        <ion-label>Cambia Password</ion-label>
+      </ion-item>
+      <ion-item color="light" class="delete-item" (click)="deleteAccount()">
+        <ion-label color="danger">Cancella Account</ion-label>
+        <ion-icon color="danger" name="trash-outline" slot="end"></ion-icon>
+      </ion-item>
+      <ion-item color="light" detail href="#">
+        <ion-label>Privacy</ion-label>
+      </ion-item>
+    </ion-list>
+  </ion-content>

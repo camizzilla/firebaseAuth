@@ -1,72 +1,79 @@
-<div class="flex-center container">
-  <ion-card expand="full" class="w-100" >
-    <ion-card-header>
-      <ion-card-title>Registrazione</ion-card-title>
-      <ion-card-subtitle>Effettua l'accesso </ion-card-subtitle>
-    </ion-card-header>
+<div class="container flex-column">
+  <div class="container-header">
+    <div class="logo">
+      <ion-img
+        src="../../../assets/images/logo.svg"
+        alt="Logo">
+      </ion-img>
+    </div>
+  </div>
+  <div class="container-body">
+    <ion-text>
+      <h1 class="title text-heavy text-xxxl ion-text-uppercase">Registrazione</h1>
+      <h2 class="subtitle ion-bold">Crea l'account</h2>
+    </ion-text>
+    <form [formGroup]="registrationForm" (ngSubmit)="register()">
+      <ion-item>
+        <ion-label position="floating">Username</ion-label>
+        <ion-input type="text" formControlName="username" required></ion-input>
+      </ion-item>
+      <div *ngIf="username?.invalid && (username?.dirty || username?.touched)">
+        <ion-text color="danger" class="ion-padding-start">
+          <small *ngIf="username?.errors?.['required']">
+            L'email è obbligatorio
+          </small>
+          <small *ngIf="username?.errors?.['username']">
+            Inserire un indirizzo email valido
+          </small>
+        </ion-text>
+      </div>
 
-    <ion-card-content>
-      <form [formGroup]="registrationForm" (ngSubmit)="register()">
-        <ion-item>
-          <ion-label position="floating">Username</ion-label>
-          <ion-input type="text" formControlName="username" required></ion-input>
-        </ion-item>
-        <ion-item *ngIf="username?.invalid && (username?.dirty || username?.touched)">
-          <ion-text color="danger" class="ion-padding-start">
-            <small *ngIf="username?.errors?.['required']">
-              L'username è obbligatorio
-            </small>
-            <small *ngIf="username?.errors?.['email']">
-              Inserire un indirizzo email valido
-            </small>
-          </ion-text>
-        </ion-item>
+      <!-- Password -->
+      <ion-item>
+        <ion-label position="floating">Password</ion-label>
+        <ion-input type="{{ showPassword ? 'text' : 'password' }}" formControlName="password" required></ion-input>
+        <ion-icon class="flex-y-self-end" name="{{ showPassword ? 'eye-off' : 'eye' }}" slot="end" fill="clear" (click)="showPassword = !showPassword"></ion-icon>
+      </ion-item>
+      <div *ngIf="password?.invalid && (password?.dirty || password?.touched)">
+        <ion-text color="danger" class="ion-padding-start">
+          <small *ngIf="password?.errors?.['required']">
+            La password è obbligatoria
+          </small>
+          <small *ngIf="password?.errors?.['minlength']">
+            La password deve essere lunga almeno 8 caratteri
+          </small>
+        </ion-text>
+      </div>
 
-        <!-- Password -->
-        <ion-item>
-          <ion-label position="floating">Password</ion-label>
-          <ion-input type="{{ showPassword ? 'text' : 'password' }}" formControlName="password" required></ion-input>
-          <ion-icon class="flex-y-self-end" name="{{ showPassword ? 'eye-off' : 'eye' }}" slot="end" fill="clear" (click)="showPassword = !showPassword"></ion-icon>
-        </ion-item>
-        <ion-item *ngIf="password?.invalid && (password?.dirty || password?.touched)">
-          <ion-text color="danger" class="ion-padding-start">
-            <small *ngIf="password?.errors?.['required']">
-              La password è obbligatoria
-            </small>
-            <small *ngIf="password?.errors?.['minlength']">
-              La password deve essere lunga almeno 8 caratteri
-            </small>
-          </ion-text>
-        </ion-item>
-
-        <!-- Conferma Password -->
-        <ion-item>
-          <ion-label position="floating">Password</ion-label>
-          <ion-input type="{{ showPassword ? 'text' : 'password' }}" formControlName="confirmPassword" required></ion-input>
-          <ion-icon class="flex-y-self-end" name="{{ showPassword ? 'eye-off' : 'eye' }}" slot="end" fill="clear" (click)="showPassword = !showPassword"></ion-icon>
-        </ion-item>
-        <ion-item *ngIf="confirmPassword?.invalid && (confirmPassword?.dirty || confirmPassword?.touched)">
-          <ion-text color="danger" class="ion-padding-start">
-            <small *ngIf="confirmPassword?.errors?.['required']">
-              La password è obbligatoria
-            </small>
-            <small *ngIf="confirmPassword?.errors?.['minlength']">
-              La password deve essere lunga almeno 8 caratteri
-            </small>
-            <small *ngIf="confirmPassword?.errors?.['confirmPasswordValidator']">
-              La password con è uguale
-            </small>
-          </ion-text>
-        </ion-item>
-        <ion-row class="w-100">
-          <ion-col class="ion-margin-vertical">
-            <ion-button class="ion-margin-vertical" expand="block" fill="outline" (click)="goToLoginPage()">Log in</ion-button>
-            <ion-button  type="submit" class="ion-margin-vertical" expand="block" [disabled]="registrationForm.invalid">Invia</ion-button>
-          </ion-col>
-        </ion-row>
-      </form>
-    </ion-card-content>
-
-
-  </ion-card>
+      <!-- Conferma Password -->
+      <ion-item>
+        <ion-label position="floating">Password</ion-label>
+        <ion-input type="{{ showPassword ? 'text' : 'password' }}" formControlName="confirmPassword" required></ion-input>
+        <ion-icon class="flex-y-self-end" name="{{ showPassword ? 'eye-off' : 'eye' }}" slot="end" fill="clear" (click)="showPassword = !showPassword"></ion-icon>
+      </ion-item>
+      <div *ngIf="confirmPassword?.invalid && (confirmPassword?.dirty || confirmPassword?.touched)">
+        <ion-text color="danger" class="ion-padding-start">
+          <small *ngIf="confirmPassword?.errors?.['required']">
+            La password è obbligatoria
+          </small>
+          <small *ngIf="confirmPassword?.errors?.['minlength']">
+            La password deve essere lunga almeno 8 caratteri
+          </small>
+          <small *ngIf="confirmPassword?.errors?.['confirmPasswordValidator']">
+            La password con è uguale
+          </small>
+        </ion-text>
+      </div>
+      <ion-row class="w-100">
+        <ion-col class="ion-margin-vertical">
+          <ion-button  type="submit" class="ion-margin-vertical" expand="block" [disabled]="registrationForm.invalid">Invia</ion-button>
+        </ion-col>
+      </ion-row>
+    </form>
+    <ion-button class="ion-text-uppercase" expand="block" fill="clear" (click)="goToLoginPage()">Log in</ion-button>
+  </div>
+  <div class="container-footer">
+    <small>by Franco Castello</small>
+  </div>
 </div>
+

@@ -52,9 +52,12 @@ export class RegistrationPage implements OnInit {
 
     await loading.dismiss();
 
-    user ?
-    this.router.navigateByUrl('/tabs', { replaceUrl: true }) :
-    this.showAlert('Registration failed', 'Please try again');
+    if( user ) {
+      this.authService.logout();
+      this.router.navigateByUrl('verify-email', { replaceUrl: true })
+    } else {
+      this.showAlert('Registration failed', 'Please try again');
+    }
   }
 
   async showAlert( header: string, message:string ){

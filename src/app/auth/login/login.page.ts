@@ -24,13 +24,13 @@ export class LoginPage implements OnInit {
 
   ngOnInit() {
     this.loginForm = this.fb.group({
-      username: ['', [Validators.required, Validators.email]],
+      email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8)]],
     });
   }
 
-	get username() {
-		return this.loginForm.get('username');
+	get email() {
+		return this.loginForm.get('email');
 	}
 
 	get password() {
@@ -41,20 +41,30 @@ export class LoginPage implements OnInit {
     const loading = await this.loadingController.create();
     await loading.present();
 
-    const user = await this.authService.login( this.username?.value, this.password?.value);
+    const user = await this.authService.login( this.email?.value, this.password?.value);
 
     await loading.dismiss();
 
     if( user?._tokenResponse?.registered ){
-      this.router.navigateByUrl('/tabs', { replaceUrl: true })
+      if( user?.user?.emailVerified ){
+        this.router.navigateByUrl('/tabs', { replaceUrl: true })
+      } else {
+        this.authService.logout();
+        this.router.navigateByUrl('verify-email', { replaceUrl: true })
+      }
     } else {
       this.error.errorCode(user);
     }
+
 
   }
 
   goToRegistrationPage(){
     this.router.navigateByUrl('/registration', { replaceUrl: true })
+  }
+
+  goToResetPasswordPage(){
+    this.router.navigateByUrl('/password-recovery', { replaceUrl: true })
   }
 
 }

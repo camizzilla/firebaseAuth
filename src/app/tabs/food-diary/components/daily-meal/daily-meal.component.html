@@ -1,0 +1,23 @@
+<div class="daily-meal flex-column ion-margin-vertical ion-padding">
+  <div class="flex-center space-between w-100">
+    <ion-text color="secondary">
+      <h2 class="ion-no-margin">{{title}}</h2>
+    </ion-text>
+    <div class="bottons flex-center space-between">
+      <ion-button>
+        <ion-icon size="small" fill="clear" slot="icon-only" name="list-outline"></ion-icon>
+      </ion-button>
+      <ion-button (click)="addFoodItem()">
+        <ion-icon size="small" fill="clear" slot="icon-only" name="add-outline"></ion-icon>
+      </ion-button>
+    </div>
+  </div>
+
+  <div class="list-items w-100" *ngFor="let foodItem of foodItems; let i = index">
+    <app-food-item
+      [value]="foodItem.value"
+      (saveValueEvent)="saveFoodItem($event, i)"
+      (deleteEvent)="removeFoodItem(i)"></app-food-item>
+  </div>
+
+</div>

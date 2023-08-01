@@ -1,0 +1,70 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Tab 1
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<!-- <ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Tab 1</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <app-explore-container name="Tab 1 page"></app-explore-container>
+</ion-content> -->
+<div class="container flex-column">
+  <ion-content>
+    <swiper-container>
+      <swiper-slide>
+        <div class="days flex-center space-evenly">
+          <ion-button fill="outline">L</ion-button>
+          <ion-button fill="outline">M</ion-button>
+          <ion-button fill="outline">ME</ion-button>
+          <ion-button fill="outline">G</ion-button>
+          <ion-button fill="outline">V</ion-button>
+          <ion-button fill="outline">S</ion-button>
+          <ion-button fill="outline">D</ion-button>
+        </div>
+
+        <ion-list class="ion-margin-vertical" >
+          <app-daily-meal
+            [title]="'Colazione'"
+            [value]="'Lorem ipsum dolor sit amet, consectetur adipiscing elit.'">
+          </app-daily-meal>
+
+          <app-daily-meal
+            [title]="'Spuntino'">
+          </app-daily-meal>
+
+          <app-daily-meal
+            [title]="'Pranzo'">
+          </app-daily-meal>
+
+          <app-daily-meal
+            [title]="'Merenda'">
+          </app-daily-meal>
+
+          <app-daily-meal
+            [title]="'Cena'">
+          </app-daily-meal>
+        </ion-list>
+
+      </swiper-slide>
+      <swiper-slide>Slide 2</swiper-slide>
+      <swiper-slide>Slide 3</swiper-slide>
+    </swiper-container>
+  </ion-content>
+  <!-- <div class="container-header">
+    <div class="flex-center">
+
+    </div>
+  </div>
+  <div class="container-body">
+    xxxxxxxxxxxxxxxxxxxx
+  </div>
+  <div class="container-footer">
+    xxxxxxxx
+  </div> -->
+</div>

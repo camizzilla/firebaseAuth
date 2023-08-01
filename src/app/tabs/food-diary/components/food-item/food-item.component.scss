@@ -1,0 +1,11 @@
+.food {
+  display: flex;
+  flex-direction: column;
+  .buttons {
+    display: flex;
+    justify-content: end;
+    ion-button {
+      margin: 0 .5rem;
+    }
+  }
+}

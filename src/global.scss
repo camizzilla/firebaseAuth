@@ -25,6 +25,33 @@
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
 
+@import "./theme/styles/fonts.scss";
+
+body {
+  background: linear-gradient(45deg, var(--ion-color-primary), var(--ion-color-secondary));
+  background-size: 400% 400%;
+
+  -webkit-animation: AnimationName 24s ease infinite;
+  -moz-animation: AnimationName 24s ease infinite;
+  animation: AnimationName 24s ease infinite;
+}
+
+@-webkit-keyframes AnimationName {
+  0%{background-position:0% 87%}
+  50%{background-position:100% 14%}
+  100%{background-position:0% 87%}
+}
+@-moz-keyframes AnimationName {
+  0%{background-position:0% 87%}
+  50%{background-position:100% 14%}
+  100%{background-position:0% 87%}
+}
+@keyframes AnimationName {
+  0%{background-position:0% 87%}
+  50%{background-position:100% 14%}
+  100%{background-position:0% 87%}
+}
+
 .flex-center {
   display: flex;
   justify-content: center;
@@ -37,10 +64,93 @@
   align-self: end;
 }
 
+.flex-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+}
+
+.space-between {
+  justify-content: space-between;
+}
+
+.space-evenly {
+  justify-content: space-evenly;
+}
+
+.end {
+  justify-content: end;
+}
+
 .container {
-  padding: 15px;
+  padding: 1rem;
 }
 
 .w-100 {
   width: 100%;
+}
+
+ion-card {
+  border-radius: var(--ion-border-radius);
+  border: 3px solid var(--ion-color-primary-dark)
+}
+
+.logo {
+  width: 100%;
+  max-width: 250px;
+  min-width: 150px;
+}
+
+
+/************* FORM *************/
+
+form {
+  ion-item {
+    margin: 1rem 0;
+    border-radius: var(--ion-border-radius);
+  }
+}
+
+ion-button {
+  --background: var(--ion-color-secondary);
+  --background-hover: var(--ion-color-secondary-dark);
+  --background-activated: var(--ion-color-secondary-dark);
+  --background-focused: var(--ion-color-secondary-dark);
+
+  --color: var(--ion-color-light);
+
+  --border-radius: var(--ion-border-radius);
+  --border-color: var(--ion-color-secondary-dark);
+  --border-style: solid;
+  --border-width: 1px;
+
+  --box-shadow: 0 2px 6px 0 rgb(0, 0, 0, 0.25);
+
+  --ripple-color: var(--ion-color-secondary-light);
+
+  --padding-top: 10px;
+  --padding-bottom: 10px;
+
+  &[fill="clear"]{
+    --border-width: 0px;
+    --box-shadow: 0;
+    --color: var(--ion-color-secondary-dark) !important;
+    --background: trasparent;
+  }
+}
+
+//text.scss
+
+.text-heavy {
+  font-weight: 900;
+}
+
+.text-xxxl {
+  font-size: 3rem;
+}
+
+a {
+  color: var(--ion-color-tertiary-shade);
 }

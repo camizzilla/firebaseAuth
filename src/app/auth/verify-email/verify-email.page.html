@@ -1,0 +1,31 @@
+<div class="container flex-column">
+  <div class="container-header">
+    <div class="logo">
+      <ion-img
+        src="../../../assets/images/logo.svg"
+        alt="Logo">
+      </ion-img>
+    </div>
+  </div>
+  <div class="container-body">
+    <ion-text>
+      <h1 class="title text-heavy text-xxxl ion-text-uppercase">Verifica email</h1>
+      <h2 class="subtitle ion-bold">La tua email non è stata verificata, controlla nella tua email</h2>
+    </ion-text>
+    <ion-grid>
+      <ion-row>
+        <ion-button class="ion-text-uppercase" type="submit" (click)="sendVerificationMail()" expand="block">
+          Reinviami l'email di notifica
+        </ion-button>
+      </ion-row>
+      <ion-row class="ion-margin-vertical">
+        <div>
+          Se hai verificato vai alla pagina di <a color="light" [routerLink]="['/login']" routerLinkActive="router-link-active" >Login</a>
+        </div>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <div class="container-footer">
+    <small>by Franco Castello</small>
+  </div>
+</div>

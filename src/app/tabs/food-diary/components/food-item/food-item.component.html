@@ -1,0 +1,21 @@
+<div  class="food ion-margin-vertical">
+  <div class="buttons">
+    <ion-button [disabled]="!this.foodItem.value" (click)="save()">
+      <ion-icon size="small" fill="clear" slot="icon-only" name="save-outline"></ion-icon>
+    </ion-button>
+    <ion-button (click)="modify()">
+      <ion-icon size="small" fill="clear" slot="icon-only" name="create-outline"></ion-icon>
+    </ion-button>
+    <ion-button (click)="delete()">
+      <ion-icon size="small" fill="clear" slot="icon-only" name="trash-outline"></ion-icon>
+    </ion-button>
+  </div>
+  <ion-textarea
+    #foodItem
+    placeholder="Type something here"
+    [autoGrow]="isAutoGrow"
+    [readonly]="isReadonly"
+    [value]="value"
+    [disabled]="isDisabled">
+</ion-textarea>
+</div>
